@@ -224,6 +224,7 @@
       <DependentUpon>EmployeeDataModel.edmx</DependentUpon>
       <LastGenOutput>EmployeeDataModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Employees.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
