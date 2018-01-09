@@ -47,9 +47,32 @@ namespace WebAPI_Demo.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
-            
+        }
 
-            
+        public HttpResponseMessage Delete(int id)
+        {
+            using (EmployeeDBEntities entities = new EmployeeDBEntities())
+            {
+                try
+                {
+                    var entity = entities.Employees.FirstOrDefault(e => e.ID == id);
+                    if (entity != null)
+                    {
+                        entities.Employees.Remove(entity);
+                        entities.SaveChanges();
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Employee not found with id = " + id.ToString());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+                }
+                
+            }
         }
     }
 }
